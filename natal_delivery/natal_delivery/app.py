@@ -1,5 +1,5 @@
 from flask import Flask
-from delivery_natal import views
+from natal_delivery import views
 
 def create_app():
     """Factory principal"""
