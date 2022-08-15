@@ -132,3 +132,7 @@ dmypy.json
 delivery/delivery/delivery.db
 
 delivery/.secrets.toml
+
+
+# gerais
+content_aulas/
