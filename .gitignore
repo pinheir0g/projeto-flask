@@ -129,10 +129,10 @@ dmypy.json
 .pyre/
 
 # db
-delivery/delivery/delivery.db
+natal_delivery/natal_delivery/delivery.db
 
-delivery/.secrets.toml
+natal_delivery/.secrets.toml
 
 
 # gerais
-content_aulas/
+/content_aulas
