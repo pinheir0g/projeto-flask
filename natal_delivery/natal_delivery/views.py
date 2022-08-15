@@ -1,3 +1,5 @@
+from flask import render_template, request
+
 """Extensão Flask"""
 
 def init_app(app):
@@ -5,8 +7,9 @@ def init_app(app):
 
     @app.route('/')
     def index():
-        return '<h1 style="text-align: center;">Restaurante da Natal</h1><button>Login</button>'
-
+        return render_template(
+            "base.html"
+        )
 
     @app.route("/sobre")
     def sobre():
