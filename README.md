@@ -18,6 +18,7 @@ def hello():
     return "Hello, World!"      # Objeto response retornado
 ```
 
+> Salvar o arquivo que vai iniciar a aplicação com flask, tem por padrão do flask, colocar o nome dele de app.py, que assim o flask consegue identificar o arquivo que deve executar pra iniciar a aplicação com mais facilidade e sem você precisar especificar o nome do arquivo na chamada dele.
 ## Views
 
 São as função que colocamos nas rotas, o exemplo acima a função hello() é uma view que atende na rota /.
@@ -99,4 +100,4 @@ Que vai ser retornado uma lista com as fixtures existentes.
 
 ## Blueprints
 
-São a mesma coisa que plug-in no flask
+São a mesma coisa que plug-in no flask, é um esquema onde você divide o projeto em várias camadas, varias pastas diferentes que elas seriam as próprias blueprints e vai trabalhando o que precisa ser trabalhado em cada uma, facilitando se caso der algum erro depois, não precisa editar o projeto todo só a blueprint que deu o problema.
