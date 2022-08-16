@@ -53,9 +53,13 @@ def test_exemplo1():
     assert 1 + 1 == 3
 ```
 
-Para executar esse test não precisa importar o pytest normalmente, basta chamar ele pelo terminal e passar o nome do arquivo.
+Para executar esse test não precisa importar o pytest normalmente, basta chamar ele pelo terminal e passar o nome do arquivo ou pasta.
 
     $ pytest test_ex.py
+
+Também pode passar o parametro -v para ver mais detalhes do test
+
+    $ pytest tests/ -v
 
  Depois de executado, o pytest vai procurar dentro da pasta escolhida um arquivo chamado conftest.py e executar o que tiver lá dentro.
 
@@ -73,7 +77,7 @@ Para executar esse test não precisa importar o pytest normalmente, basta chamar
     return "testando"
  ```
 
- Esse codigo significa que toda vez que for rodado u8m test novo, o dev pode contar que vai ser criado um objeto chamado "exemplo", nesse caso, e toda vez que for acessado vai ser retornado uma string contendo "testando".
+ Esse codigo significa que toda vez que for rodado um test novo, o dev pode contar que vai ser criado um objeto chamado "exemplo", nesse caso, e toda vez que for acessado vai ser retornado uma string contendo "testando".
 
  Então ai dentro o dev vai criando varias fixtures para tudo que for reutilizar, pode ser uma pasta, um banco de dados, etc.
 
@@ -101,6 +105,13 @@ Que vai ser retornado uma lista com as fixtures existentes.
 ## Blueprints
 
 São a mesma coisa que plug-in no flask, é um esquema onde você divide o projeto em várias camadas, varias pastas diferentes que elas seriam as próprias blueprints e vai trabalhando o que precisa ser trabalhado em cada uma, facilitando se caso der algum erro depois, não precisa editar o projeto todo só a blueprint que deu o problema.
+
+
+## CI
+É uma sigla para Continuos integration (Integração contínua).
+Isso significa que que cada vez que eu fizer uma alteração no código, localmente, vou precisar integrar ele com o código principal que é a master no github
+
+E pra isso acontecer, antes de fazer a integração, vai ser preciso fazer umas checagens para que verifique que tudo esta certo e o código principal não vai quebrar.
 
 
 // Em desenvolvimento
