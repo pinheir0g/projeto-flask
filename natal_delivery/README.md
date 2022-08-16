@@ -101,3 +101,6 @@ Que vai ser retornado uma lista com as fixtures existentes.
 ## Blueprints
 
 São a mesma coisa que plug-in no flask, é um esquema onde você divide o projeto em várias camadas, varias pastas diferentes que elas seriam as próprias blueprints e vai trabalhando o que precisa ser trabalhado em cada uma, facilitando se caso der algum erro depois, não precisa editar o projeto todo só a blueprint que deu o problema.
+
+
+// Em desenvolvimento
