@@ -1,25 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Natal Delivery</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    {% endblock head %}
 
-<!DOCTYPE html> 
-<Html> 
-    <Head>  
-        <Meta   charset = "utf-8">  
-        <Title>Delivery Natal Foods</title>  
-    </Head> 
-    <Body> 
-        <div id = "container"   style = "width: 100%;"> 
-            <Div id = "header"   style = "background-color: #FFA500; "> 
-                <H1 style = "margin-bottom: 20 ; text-align: center;"> Delivery Natal </h1> </div> 
+    {% block extra_css %} {% endblock extra_css %}
 
-            <div   id = "menu"   style = "background-color: #231c1c; color:#EEEEEE; height: 500px; width: 700px; float: left; font-size: 20px;"> 
-                <button>Home</button> <br><br> <button>Login</button> <br><br> <button>Cardápio</button> <br><br> <button>Promoções</button> 
-            </div> 
-
-            <div id = "content" style="background-color:#EEEEEE; height:100%; width:100%; float:left; font-size:20px;"> 
-                <p>Restaurante da Natal, o melhor prato feito da região.</p>
-                <p>E o pior atendimento da região</p>
-            </div> 
-
-            <div   id = "footer"   style = "background-color: #FFA500;  clear: both; text-align: center; font-size: 15px;"> Poweredy by Pinheir0g </div> 
+  </head>
+  <body>
+    
+    {% block nav %}
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <strong>NatalDelivery</strong>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-    </Body> 
-</Html>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="{{ url_for('site.index') }}">
+              Home
+            </a>
+      
+            <a class="navbar-item" href="{{ url_for('site.menu') }}">
+              Cardápio
+            </a>
+
+            <a class="navbar-item" href="{{ url_for('site.about') }}">
+              Sobre
+            </a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Feijoada para 2 pessoas
+                </a>
+                <a class="navbar-item">
+                  Contra filé grelhado
+                </a>
+                <a class="navbar-item">
+                  Filé de frango grelhado
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-light">
+                  Log in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    {% endblock nav %}
+
+    {% block top %} {% endblock %}
+
+  <section class="section">
+      <div class="container">
+          {% block main %} {% endblock %}
+      </div>
+  </section>
+
+  {% block footer %}
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+  {% endblock footer %}
+  </body>
+</html>

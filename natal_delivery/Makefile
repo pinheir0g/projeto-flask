@@ -1,5 +1,7 @@
-envdev:
-	export FLASK_ENV=development
+rundev:
+	poetry shell;
+	export FLASK_ENV=development;
+	flask run
 
 install:
 	poetry install
