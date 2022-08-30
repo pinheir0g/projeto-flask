@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, render_template
 
 
 bp = Blueprint("site", __name__)
@@ -10,14 +10,21 @@ bp = Blueprint("site", __name__)
 @bp.route('/')
 def index():
     return render_template(
-        "base.html"
+        "index.html", 
+        site_name="Natal Delivery", 
+        site_subtitle="O melhor que nos temos!"
     )
 
 @bp.route("/sobre")
-def sobre():
-    return "<h1>Esse é o melhor restaurante de SJM</h1><button>SIM</button><button>NÃO</button>"
+def about():
+    return render_template("about.html")
 
 
 @bp.route('/login')
 def login():
     return "<form><input type='text'></input></form>"
+
+
+@bp.route("/cardapio")
+def menu():
+    return render_template("menu.html")

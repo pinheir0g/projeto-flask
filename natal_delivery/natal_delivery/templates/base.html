@@ -4,7 +4,7 @@
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Natal Delivery!</title>
+    <title>Natal Delivery</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     {% endblock head %}
@@ -18,7 +18,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
-            NatalDelivery
+            <strong>NatalDelivery</strong>
           </a>
       
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -30,12 +30,16 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href="{{ url_for('site.index') }}">
               Home
             </a>
       
-            <a class="navbar-item">
+            <a class="navbar-item" href="{{ url_for('site.menu') }}">
               Cardápio
+            </a>
+
+            <a class="navbar-item" href="{{ url_for('site.about') }}">
+              Sobre
             </a>
       
             <div class="navbar-item has-dropdown is-hoverable">
@@ -81,8 +85,7 @@
 
   <section class="section">
       <div class="container">
-          {% block main %}
-           {% endblock %}
+          {% block main %} {% endblock %}
       </div>
   </section>
 
