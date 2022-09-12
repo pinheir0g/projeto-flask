@@ -28,7 +28,7 @@ Para iniciar um ambiente de desenvolvimento com o flask e ter umas funções a m
 Utiliza o comando:
 
     export FLASK_DEBUG=True
-
+---
 ## Views
 
 São as função que colocamos nas rotas, no exemplo acima, a função hello() é uma view que atende na rota /. 
@@ -39,7 +39,7 @@ Protocolo do flask é, funções onde o dev vai ligar as funções com URL's e o
 
 Cada rota criada é uma função do python, que vai definir quais são os parâmetros de match da rota e vai retornar um objeto response que vai ser um texto.
 
-
+---
 ## Tests com Pytest
 
 Pytest é uma biblioteca python feita para todo o tipo de testes que o dev precisará fazer, tanto tests unitário quanto tests funcionais e etc.
@@ -107,19 +107,19 @@ Também pode passar o parametro -v para ver mais detalhes do test
 
 Que vai ser retornado uma lista com as fixtures existentes. 
 
-
+---
 ## Blueprints
 
 São a mesma coisa que plug-in no flask, é um esquema onde você divide o projeto em várias camadas, varias pastas diferentes que elas seriam as próprias blueprints e vai trabalhando o que precisa ser trabalhado em cada uma, facilitando se caso der algum erro depois, não precisa editar o projeto todo só a blueprint que deu o problema.
 
-
+---
 ## CI
 É uma sigla para Continuos integration (Integração contínua).
 Isso significa que que cada vez que eu fizer uma alteração no código, localmente, vou precisar integrar ele com o código principal que é a master no github.
 
 E pra isso acontecer, antes de fazer a integração, vai ser preciso fazer umas checagens para que verifique que tudo esta certo e o código principal não vai quebrar.
 
-
+---
 ## Templates
 Para renderização de templates com flask, vamos usar a função "render_template" do próprio flask, onde ela recebe um parâmetro que é uma string especificando o arquivo html que ele deve renderizar.
 
@@ -146,7 +146,7 @@ Ex:
   </body>
 ```
 
-A linguagem jinja é escrita dentro das chaves { } e contém variações para cada tipo de coisa que for fazer, por exemplo, o simbolo de % quando for fazer um código em python, ou as duas {{ }} para criar uma variável, entre outras.
+A linguagem jinja é escrita dentro das chaves { } e contém variações para cada tipo de coisa que for fazer, por exemplo, o simbolo de % ou as duas {{ }} para criar uma variável, entre outras.
 
 O jinja serve para renderizar o template de maneira dinâmica, nesse exemplo os items podem ser qualquer coisa, ele vai ser passado na hora de renderizar.
 
@@ -165,5 +165,36 @@ def index():
 ```
 
 Para entender mais sobre a linguagem, veja a documentação do [jinja](https://jinja.palletsprojects.com/en/3.1.x/).
+
+---
+
+## Databases
+
+O que precisa para um relacionamento dar certo?
+
+chave primária e relacionamento
+
+## SQL
+
+### Consultas estruturais
+- CREATE TABLE
+- ALTER TABLE
+- DROP TABLE
+
+### Consultas de Dados (CRUD)
+
+- INSERT INTO nome VALUE(...);
+- SELECT campo FROM nome;
+- UPDATE nome SET campo WHERE;
+- DELETE from nome WHERE; 
+
+Sempre que usar UPDATE e DELETE usar a clausula WHERE para selecionar o que você deseja alterar ou deletar, porque sem ela corre o risco de alterar ou deletar todo o banco de dados.
+
+é recomendado que toda tabela tenha um ID e que todo ID seja uma primary key.
+
+cada tabela criada no db vai ser uma classe em python e cada atributo dessa classe vai ser um field na tabela.
+
+## ORM - Object Relational Mapper
+É uma técnica de mapeamento objeto relacional que permite fazer relação dos objetos com os dados que os mesmos representam.
 
 // Em desenvolvimento
