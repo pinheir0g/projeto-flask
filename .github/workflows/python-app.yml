@@ -31,6 +31,11 @@ jobs:
 
     - name: Install Project
       run: poetry install
+
+    - name: Database Migrations
+      run: | 
+        make init_db
+    
       
     - name: Runs tests
       run: poetry run pytest -v
