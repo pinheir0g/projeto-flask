@@ -1,5 +1,6 @@
 from flask_migrate import Migrate
 from natal_delivery.ext.db import db #noqa
+from natal_delivery.ext.db import models
 
 migrate = Migrate()
 
