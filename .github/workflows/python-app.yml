@@ -33,8 +33,13 @@ jobs:
       run: poetry install
 
     - name: Database Migrations
+<<<<<<< HEAD
       run: run: FLASK_APP=natal_delivery/app.py flask create db FLASK_APP=natal_delivery/app.py flask db upgrade
     
       
+=======
+      run: FLASK_APP=natal_delivery/app.py flask create db | FLASK_APP=natal_delivery/app.py flask db upgrade
+	
+>>>>>>> 60548e8c89064b137d599299b5aeb674a3cb6d4c
     - name: Runs tests
       run: poetry run pytest -v
