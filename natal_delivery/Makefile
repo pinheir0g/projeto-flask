@@ -16,5 +16,5 @@ installp:
 
 
 init_db:
-	poetry FLASK_APP=natal_delivery/app.py flask create db
-	poetry FLASK_APP=natal_delivery/app.py flask db upgrade
+	poetry run FLASK_APP=natal_delivery/app.py flask create db
+	poetry run FLASK_APP=natal_delivery/app.py flask db upgrade
