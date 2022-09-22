@@ -13,17 +13,18 @@ class UserAdmin(ModelView):
 
     column_formatters = {"email": lambda s, r, u, *a: u.email.split("@")[0]}
 
-    column_list = ["email", "admin"]
+    column_list = ["email", "admin", "name"]
 
     column_searchable_list = ["email"]
 
     column_filters = [
         "email",
         "admin",
+        "name",
         filters.FilterLike(
             User.email,
             "dominio",
-            options=(("gamil", "Gmail"), ("outlook", "Outlook"))
+            options=(("gmail", "Gmail"), ("outlook", "Outlook"))
         )
      ]
  
