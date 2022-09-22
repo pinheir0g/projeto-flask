@@ -34,8 +34,8 @@ jobs:
 
     - name: Database Migrations
       run: |
-        FLASK_APP=natal_delivery/app.py poetry run flask create db
+        FLASK_APP=natal_delivery/app.py poetry run flask create-db
         FLASK_APP=natal_delivery/app.py poetry run flask db upgrade
-    
+
     - name: Runs tests
       run: poetry run pytest -v
