@@ -28,10 +28,9 @@ class Items(db.Model):
     name = db.Column("name", db.Unicode)
     image = db.Column("image", db.Unicode)
     price = db.Column("price", db.Numeric)
-    promo = db.Column("promo", db.Boolean)
     store_id = db.Column("store_id", db.Integer, db.ForeignKey("store.id"))
     available = db.Column("available", db.Boolean)
-
+    promotion = db.Column("promotion", db.Boolean)
     store = db.relationship("Store", foreign_keys=store_id)
 
 
