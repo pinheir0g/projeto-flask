@@ -272,7 +272,6 @@ Faça isso criando uma instancia da classe ModelView, que você pode importar da
 ```Python
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from 
 
 # set optional bootswatch theme
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
