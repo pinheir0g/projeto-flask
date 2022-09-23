@@ -2,6 +2,7 @@ import click
 from natal_delivery.ext.db import db
 from natal_delivery.ext.auth.models import User
 from natal_delivery.ext.db import models
+import os
 
 def init_app(app):
 
@@ -9,7 +10,9 @@ def init_app(app):
     def create_db():
 
         """Create a database"""
-        db.create_all()
+        arquivo = "~/dev/project-flask/natal_delivery/natal_delivery/delivery.db"
+        if not os.path.exists(arquivo):
+            db.create_all()
 
 
     @app.cli.command()
