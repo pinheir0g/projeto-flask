@@ -1,14 +1,6 @@
 from natal_delivery.ext.db import db
 
 
-class User(db.Model):
-    __tablename__ = "user"
-    id = db.Column("id", db.Integer, primary_key=True)
-    email = db.Column("email", db.Unicode, unique=True)
-    passwd = db.Column("passwd", db.Unicode)
-    admin = db.Column("admin", db.Boolean)
-
-
 class Category(db.Model):
     __tablename__ = "category"
     id = db.Column("id", db.Integer, primary_key=True)
@@ -38,7 +30,7 @@ class Items(db.Model):
     price = db.Column("price", db.Numeric)
     store_id = db.Column("store_id", db.Integer, db.ForeignKey("store.id"))
     available = db.Column("available", db.Boolean)
-
+    promotion = db.Column("promotion", db.Boolean)
     store = db.relationship("Store", foreign_keys=store_id)
 
 
@@ -84,7 +76,7 @@ class Checkout(db.Model):
 class Address(db.Model):
     __tablename__ = "address"
     id = db.Column("id", db.Integer, primary_key=True)
-    zip = db.Column("zip", db.Unicode)
+    zipcode = db.Column("zip", db.Unicode)
     country = db.Column("country", db.Unicode)
     address = db.Column("address", db.Unicode)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))

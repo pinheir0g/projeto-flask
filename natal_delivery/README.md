@@ -197,4 +197,101 @@ cada tabela criada no db vai ser uma classe em python e cada atributo dessa clas
 ## ORM - Object Relational Mapper
 É uma técnica de mapeamento objeto relacional que permite fazer relação dos objetos com os dados que os mesmos representam.
 
+
+## Migrations
+É para quando é preciso fazer uma alteração no banco de dados, criar, alterar ou remover algo.
+
+Nesse projeto para fazer as migrations ta sendo usando o flask-migrate, que é uma biblioteca do flask que é responsável por automatizar todo esse processo de migrations.
+
+Para fazer isso, basta criar o arquivo de migrate, e dentro dele iniciar uma instancia do flask-migrate.
+
+```Python
+# Arquivo migrate.py
+
+from flask_migrate import Migrate
+
+migrate = Migrate()
+
+
+def init_app(app):
+    migrate.init_app(app, db)
+```
+
+
+Depois basta rodar o comando:
+
+    $ flask db init
+
+Vai ser criado uma pasta migrations contendo todo o conteúdo necessário para fazer o migrate.
+
+Depois de fazer a alteração no banco de dados, roda o comando:
+
+    $ flask db migrate -m "Comentário"
+
+Feito isso foi iniciado a migrate e agora precisa ser aplicar as alterações e pra isso roda o comando:
+
+    $ flask db upgrade
+
+Agora todas as alterações feitas no banco de dados, foram realizadas e aplicadas.
+
+Leia a documentação do [flask-migrate]((https://flask-migrate.readthedocs.io/en/latest/)).
+
+---
+
+## Interface Administrativa com Flask-Admin
+
+Flask-admin é uma extensão do flask que cria pra gente uma interface administrativa em cima de um data model existente, deixando o gerenciamento de dados dos serviços de web mais amigável através de uma interface.
+
+O conceito por detrás do flask-admin é que ele deixa você criar interfaces complicadas, agrupando views individuais juntas em classes. Cada pagina web que você ve no frontend, é representada como um método ou uma classe que foi adicionada a interface.
+
+Essas view classes são bastante úteis quando for preciso fazer o famoso CRUD de uma forma mais pratica em cada modelo do seu banco de dados.
+
+O primeiro passo para iniciar uma interface adm vazia:
+
+```Python
+from flask_admin import Admin
+
+# set optional bootswatch theme
+app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+
+admin = Admin()
+# Add administrative views here
+
+def init_app(app):
+    admin.name = "Exemplo"
+    admin.template_mode = "bootstrap2"
+    admin.init_app(app):
+```
+
+Depois que inciar a aplicação e você entrar em http://localhost:5000/admin/, vai ter uma pagina vazia com uma barra de navegação no topo. Você pode personalizar ela especificando o tema do bootswatch.
+
+### Adicionando Model Views
+Adicionar essas models views, permite que você adicione paginas para manutenção dos modelos do seu banco de dados.
+Faça isso criando uma instancia da classe ModelView, que você pode importar das ORM's que estão no backend do Flask-admin, nesse projeto foi usado o SQLAlchemy.
+
+```Python
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
+# set optional bootswatch theme
+app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+
+admin = Admin()
+# Add administrative views here
+
+def init_app(app):
+    admin.name = "Exemplo"
+    admin.template_mode = "bootstrap2"
+    admin.init_app(app)
+
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Post, db.session))
+```
+
+Pronto, isso lhe da todas as características para fazer um CRUD no seu model.
+
+NOTA: Existe diversas coisas que da pra fazer dentro das views criadas, personalizar de formas diferentes, adicionar novos comandos, etc.
+
+Leia a documentação do [flask-admin](https://flask-admin.readthedocs.io/en/latest/).
+
 // Em desenvolvimento
