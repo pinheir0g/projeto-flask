@@ -1,0 +1,25 @@
+[default]
+DEBUG = false
+FLASK_ADMIN_SWATCH = "cerulean"
+EXTENSIONS = [
+    "natal_delivery.ext.db:init_app",
+    "natal_delivery.ext.auth:init_app",
+    "natal_delivery.ext.admin:init_app",
+    "natal_delivery.ext.migrate:init_app",
+    "natal_delivery.ext.cli:init_app",
+    "natal_delivery.ext.toolbar:init_app",
+    "natal_delivery.ext.site:init_app",
+    "natal_delivery.ext.hooks:init_app"
+]
+
+
+[development]
+DEBUG = true
+SQLALCHEMY_DATABASE_URI = 'sqlite:///delivery.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
+DEBUG_TB_PROFILER_ENABLED = true
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+
+
+[production]
