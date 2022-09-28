@@ -9,7 +9,7 @@ admin = Admin()
 
 
 def init_app(app):
-    admin.name = "NatalDelivery"
+    admin.name = app.config.get("ADMIN_NAME", "Natal Refeições")
     admin.template_mode = "bootstrap2"
     admin.init_app(app)
 
