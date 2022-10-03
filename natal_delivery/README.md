@@ -294,4 +294,7 @@ NOTA: Existe diversas coisas que da pra fazer dentro das views criadas, personal
 
 Leia a documentação do [flask-admin](https://flask-admin.readthedocs.io/en/latest/).
 
+
+
+
 // Em desenvolvimento

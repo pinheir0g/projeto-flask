@@ -1,12 +1,11 @@
 rundev:
-	poetry shell
 	FLASK_DEBUG=True
-	FLASK_APP=natal_delivery/app.py flask run
-
-shdev:
 	poetry shell
+	FLASK_APP=natal_delivery/app.py flask run
+shdev:
 	FLASK_APP=natal_delivery/app.py
-	
+	poetry shell
+
 install:
 	poetry install
 

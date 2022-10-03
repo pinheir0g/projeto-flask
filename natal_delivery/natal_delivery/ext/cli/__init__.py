@@ -13,6 +13,8 @@ def init_app(app):
         arquivo = "~/dev/project-flask/natal_delivery/natal_delivery/delivery.db"
         if not os.path.exists(arquivo):
             db.create_all()
+        else:
+            print('DB already created!')
 
 
     @app.cli.command()
