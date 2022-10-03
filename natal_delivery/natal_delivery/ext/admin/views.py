@@ -11,13 +11,21 @@ class Category(ModelView):
     column_list = ["name", "on_menu"]
 
 
-class Store(ModelView):
-    """Store interface"""
-
-
 class Items(ModelView):
     """Store interface"""
 
 
-class Store(ModelView):
+class Order(ModelView):
+    """Store interface"""
+
+
+class OrderItems(ModelView):
+    """Store interface"""
+
+
+class Checkout(ModelView):
+    """Store interface"""
+
+
+class Address(ModelView):
     """Store interface"""
