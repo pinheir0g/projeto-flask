@@ -1,6 +1,7 @@
 import click
 from natal_delivery.ext.db import db
 from natal_delivery.ext.auth.models import User
+from natal_delivery.ext.auth.controller import create_user
 from natal_delivery.ext.db import models
 import os
 
@@ -24,14 +25,12 @@ def init_app(app):
     def add_user(email, passwd, admin):
 
         """Add a new user"""
-        user = User(
+        # TODO: tratar user exists exception
+        create_user(
             email=email,
             passwd=passwd,
             admin=admin
         )
-        db.session.add(user)
-        db.session.commit()
-
         click.echo(f"Usuário {email} criado com sucesso!")
      
     @app.cli.command()
@@ -47,7 +46,9 @@ def init_app(app):
         """Show the users list"""
         users = User.query.all()
         click.echo(f"""== Lista de Usuários ==
-        {users}""")
+        """)
+        for u in users:
+            click.echo(u)
         
 
     @app.cli.command()
