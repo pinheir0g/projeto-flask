@@ -408,6 +408,6 @@ Da mesma forma que precisamos encriptar a senha na hora de salvar no banco de da
 
 CSRF é um token que é gerado quando o formulário é renderizado e o servidor tem uma cópia desse token e ele verifica a validade desse token para não permitir que aconteça formulários que foram criados por outras pessoas, então a cada request o formulário gera um token e ele só recebe o dado se o token for igual ao do servidor.
 
-Leia a documentação do [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.0.x/) e do [WTForms](https://wtforms.readthedocs.io/en/3.0.x/)
+Leia a documentação do [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.0.x/) e do [WTForms](https://wtforms.readthedocs.io/en/3.0.x/).
 
 // Em desenvolvimento
