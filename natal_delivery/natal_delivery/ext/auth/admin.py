@@ -11,7 +11,7 @@ from flask import flash
 class UserAdmin(ModelView):
     """Users admin interface"""
 
-    column_formatters = {"email": lambda s, r, u, *a: u.email.split("@")[0]}
+     # column_formatters = {"email": lambda s, r, u, *a: u.email.split("@")[0]}
 
     column_list = ["email", "admin"]
 
