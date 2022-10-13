@@ -7,6 +7,3 @@ A ideia é fazer um aplicativo de delivery de um restaurante especifico aqui da 
 Tenho o costume de fazer a documentação dos conteúdos que to estudando, então nesse repositório vai ter anotações que fiz enquanto estudava.
 
 O aplicativo esta em [natal_delivery](/natal_delivery).
-
-
-// Em desenvolvimento
