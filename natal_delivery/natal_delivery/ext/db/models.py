@@ -16,6 +16,9 @@ class Items(db.Model):
     price = db.Column("price", db.Numeric)
     available = db.Column("available", db.Boolean)
     promotion = db.Column("promotion", db.Boolean)
+    category_id = db.Column("category_id", db.Integer, db.ForeignKey("category.id"))
+
+    category = db.relationship("Category", foreign_keys=category_id)
 
 
 class Order(db.Model):
