@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect
+from natal_delivery.ext.auth.form import UserForm
+from natal_delivery.ext.auth.controller import create_user
 
 
 bp = Blueprint("site", __name__)
@@ -18,6 +20,19 @@ def index():
 @bp.route("/sobre")
 def about():
     return render_template("about.html")
+
+@bp.route("/cadastro", methods=["GET", "POST"])
+def signup():
+    form = UserForm()
+    if form.validate_on_submit():
+        create_user(
+            email=form.email.data,
+            passwd=form.passwd.data
+        )
+        # forçar login
+        return redirect("/")
+
+    return render_template("userform.html", form=form)
 
 
 @bp.route('/login')

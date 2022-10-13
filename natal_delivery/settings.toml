@@ -5,7 +5,6 @@ EXTENSIONS = [
     "natal_delivery.ext.db:init_app",
     "natal_delivery.ext.auth:init_app",
     "natal_delivery.ext.admin:init_app",
-    "natal_delivery.ext.migrate:init_app",
     "natal_delivery.ext.cli:init_app",
     "natal_delivery.ext.toolbar:init_app",
     "natal_delivery.ext.site:init_app",

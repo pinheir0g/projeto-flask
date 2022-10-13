@@ -296,5 +296,118 @@ Leia a documentação do [flask-admin](https://flask-admin.readthedocs.io/en/lat
 
 
 
+---
+
+## Formulários
+
+Formulários HTML são um dos principais meios de interação entre um usuário e um site ou app.
+Eles permitem que os usuários enviem dados para nossa aplicação.
+
+São compostos de um ou mais widgets(campos) que podem ser estilizados de varias formas, de acordo com o HTML.
+
+Abaixo, vemos um exemplo básico de fomulário HTML:
+
+```html
+<p>Formulário</p>
+    <form method="POST">
+        Nome:
+        <br>
+        <input type="text" name="nome">
+        <br>
+        Email:
+        <br>
+        <input type="email" name="email">
+        <br>
+        Senha:
+        <br>
+        <input type="password" name="senha">
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+```
+Esse formulário html acima, não faz nada até o momento, recebe os dados, porém não faz nada com ele, só interage com o usuário e mais nada.
+
+Para poder utilizar e armazenar os dados recebidos através do formulário vamos utilizar as bibliotecas flask-wtf e wtforms.
+
+Abaixo o código de um formulário utilizando as bibliotecas:
+
+```Python
+import wtforms as wtf
+from flask_wtf import FlaskForm
+
+
+class UserForm(FlaskForm):
+    """Formulário para cadastro de usuário"""
+
+    nome = wtf.StringField('Nome', [wtf.validators.DataRequired()])
+    email = wtf.StringField('Email', [wtf.validators.DataRequired(), wtf.validators.Email()])
+    senha = wtf.PasswordField('Senha', [wtf.validators.DataRequired()])
+```
+Através da classe em python definimos nosso formulário e passamos como parâmetro o FlaskForm.
+Definimos 3 campos, sendo nome e email, campos de texto normal e senha sendo um campo de senha e passamos o validador, DataRequired, que diz que esse campo tem que ser preenchido obrigatoriamente.
+
+Existem varias definições para os campos, de acordo com a necessidade de cada um.
+
+Agora vamos fazer a conexão para os dados recebidos serem armazenados no Banco de dados.
+
+```Python
+@bp.route("/cadastro", methods=["GET", "POST"])
+def signup():
+    form = UserForm()
+    if form.validate_on_submit():
+        create_user(
+            nome=form.nome.data,
+            email=form.email.data,
+            senha=form.passwd.data
+        )
+        return redirect("/")
+
+    return render_template("userform.html", form=form)
+```
+
+Acima criamos a rota que vai levar para o formulário, dentro dela iniciamos uma instancia da nossa classe criada, UserForm, depois utilizamos o método validate_on_submit(), para validar que os dados recebidos no formulário sejam corretos com o que pedimos na classe criada, se caso esteja correto, criamos os dados que foram passados no nosso banco de dados através da função [create_user()](./natal_delivery/ext/auth/controller.py), depois de registrar o usuário vai ser redirecionado para rota "/" que é a home do app.
+
+A função create_user() registra os dados passados no banco de dados, porém como se trata de um cadastro de usuário e ele vai fornecer uma senha para isso, não é uma boa pratica salvar a senha do usuário como um texto puro no banco de dados, é preciso encriptar ela, e pra isso dentro da função foi utilizado a biblioteca werkzeug que tem um método security com uma função chamada generate_password_hash() que é responsável por fazer essa encriptação pra gente.
+
+Para poder ter acesso a senha do usuário sem a encriptação vai ser preciso utilizar a SECRET_KEY que foi setada nas configs da aplicação.
+
+Agora precisamos criar o template que vai exibir o formulário criado, para isso vamos criar o arquivo "userform.html".
+
+```html
+{% extends "base.html" %}
+
+{% block top %}
+<section class="hero is-primary">
+    <div class="hero-body">
+      <h1> Cadastre-se </h1>
+    </div>
+  </section>
+{% endblock %}
+
+{% block main %}
+    <form action="{{url_for('site.signup')}}" method="POST" enctype="multipart/form-data">
+        {{form.csrf_token}}
+
+        {{form.nome.label}}<br>
+        {{form.nome(size=20)}}<br>
+
+
+        {{form.email.label}}<br>
+        {{form.email(size=20)}}<br>
+
+        {{form.password.label}}<br>
+        {{form.password(size=20)}}<br>
+
+        <input type="submit" value="enviar">
+    </form>
+{% endblock %}
+```
+Também usaremos a linguagem jinja nesse template, e utilizamos a variável "form" no template. Essa variável foi especificada na nossa view na hora de renderizar o template
+
+Da mesma forma que precisamos encriptar a senha na hora de salvar no banco de dados, também é preciso fazer o mesmo com o próprio formulário para evitar possíveis fraudes e ataques Cross-Site Request Forgery, para isso existe o CSRF.
+
+CSRF é um token que é gerado quando o formulário é renderizado e o servidor tem uma cópia desse token e ele verifica a validade desse token para não permitir que aconteça formulários que foram criados por outras pessoas, então a cada request o formulário gera um token e ele só recebe o dado se o token for igual ao do servidor.
+
+Leia a documentação do [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.0.x/) e do [WTForms](https://wtforms.readthedocs.io/en/3.0.x/)
 
 // Em desenvolvimento

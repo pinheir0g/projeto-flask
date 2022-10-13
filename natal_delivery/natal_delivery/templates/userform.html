@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block top %}
+<section class="hero is-primary">
+    <div class="hero-body">
+      <h1> Cadastre-se </h1>
+    </div>
+  </section>
+{% endblock %}
+
+{% block main %}
+    <form action="{{url_for('site.signup')}}" method="POST" enctype="multipart/form-data">
+        {{form.csrf_token}}
+
+        {{form.email.label}}<br>
+        {{form.email(size=20)}}<br>
+
+        {{form.password.label}}<br>
+        {{form.password(size=20)}}<br>
+
+        <input type="submit" value="enviar">
+    </form>
+{% endblock %}
