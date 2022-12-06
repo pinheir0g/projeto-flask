@@ -82,7 +82,7 @@ Também pode passar o parametro -v para ver mais detalhes do test
     return app
  ```
 
- Esse código significa que toda vez que for rodado um test novo, o dev pode contar que vai ser criado um objeto chamado "exemplo", nesse caso, e toda vez que for acessado vai ser retornado uma string contendo "testando".
+ Esse código significa que toda vez que for rodado um test novo, o dev pode contar que vai ser criado um objeto app, e toda vez que for acessado vai retornar o app.
 
  Então ai dentro o dev vai criando varias fixtures para tudo que for reutilizar, pode ser uma pasta, um banco de dados, etc.
 
